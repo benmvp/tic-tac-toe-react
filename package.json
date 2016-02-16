@@ -4,6 +4,7 @@
   "description": "A client-side tic-tac-toe app written in React.",
   "main": "index.js",
   "scripts": {
+    "start": "serve",
     "build": "webpack --progress --colors",
     "build-watch": "webpack --progress --colors --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,6 +26,7 @@
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
+    "serve": "^1.4.0",
     "webpack": "^1.12.13"
   },
   "dependencies": {
@@ -32,6 +34,10 @@
     "react-dom": "^0.14.7"
   },
   "babel": {
-    "presets": ["es2015", "react", "stage-0"]
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ]
   }
 }

@@ -1,15 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {render} from 'react-dom';
-
-class App extends Component {
-    render() {
-        return (
-            <div>Hello world!!!</div>
-        );
-    }
-}
+import App from './containers/App';
 
 render(
-    <App />,
+    <App numBoards={3} />,
     document.getElementById('app')
 )

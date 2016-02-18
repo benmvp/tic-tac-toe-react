@@ -6,7 +6,7 @@
   "scripts": {
     "start": "serve",
     "build": "webpack --progress --colors",
-    "build-watch": "webpack --progress --colors --watch",
+    "build-watch": "webpack --progress --colors --watch --devtool source-map",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +30,7 @@
     "webpack": "^1.12.13"
   },
   "dependencies": {
+    "lodash": "^4.5.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
   },

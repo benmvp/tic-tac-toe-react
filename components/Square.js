@@ -2,20 +2,22 @@ import React, {Component, PropTypes} from 'react';
 
 export default class Square extends Component {
     static propTypes = {
-        containerStyle: PropTypes.object
+        player: PropTypes.string,
+        containerStyle: PropTypes.object,
+        onClick: PropTypes.func.isRequired
     }
 
     render() {
         let containerStyle = {
+            ...this.props.containerStyle,
             border: '3px solid black',
-            boxSize: 'border-box',
-            cursor: 'pointer',
-            height: '100%',
-            width: '100%',
-            ...this.props.containerStyle
+            cursor: this.props.player ? 'default' : 'pointer'
         };
+
         return (
-            <div style={containerStyle} />
+            <div style={containerStyle} onClick={this.props.onClick}>
+                {this.props.player}
+            </div>
         );
     }
 }

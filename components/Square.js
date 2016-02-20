@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {PLAYER_1} from '../reducers';
 
 export default class Square extends Component {
     static propTypes = {
@@ -11,7 +12,10 @@ export default class Square extends Component {
         let containerStyle = {
             ...this.props.containerStyle,
             border: '3px solid black',
-            cursor: this.props.player ? 'default' : 'pointer'
+            cursor: this.props.player ? 'default' : 'pointer',
+            textAlign: 'center',
+            fontSize: 80,
+            color: this.props.player === PLAYER_1 ? 'red': 'blue'
         };
 
         return (

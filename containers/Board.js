@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import Square from '../components/Square'
+import Square from '../components/Square';
+import {getInitialState, addPlay, PLAYER_1} from '../reducers';
 
 export default class Board extends Component {
     static propTypes = {
@@ -11,20 +12,19 @@ export default class Board extends Component {
     static defaultProps = {
         ...Component.defaultProps,
         gridSize: 3,
-        initialPlayer: 'X'
+        initialPlayer: PLAYER_1
     }
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            plays: Array(props.gridSize ** 2).fill(''),
-            currentPlayer: props.initialPlayer
-        };
+        this.state = getInitialState(props.gridSize, props.initialPlayer);
     }
 
     _handleSquareClick(squareNo) {
-        console.log('square clicked', squareNo);
+        this.setState(
+            addPlay(this.props.gridSize, this.state, squareNo)
+        );
     }
 
     render() {
@@ -35,7 +35,7 @@ export default class Board extends Component {
             justifyContent: 'space-between',
             maxWidth: this.props.gridSize * 150
         };
-        let squareComponents = this.state.plays.map((v, squareNo) => {
+        let squareComponents = this.state.plays.map((player, squareNo) => {
             let squarePercentage = 100 / this.props.gridSize;
             let squareWidth = (squarePercentage - 0.1 * squarePercentage).toFixed(0);
             let squareContainerStyle = {
@@ -51,6 +51,7 @@ export default class Board extends Component {
             return (
                 <Square
                     key={squareNo}
+                    player={player}
                     containerStyle={squareContainerStyle}
                     onClick={handleSquareClick} />
             );

@@ -1,4 +1,5 @@
 import range from 'lodash/range'
+import find from 'lodash/find'
 
 // Cache of precomputed winning paths for each given grid size
 let _winningPathsCache = {};
@@ -46,7 +47,7 @@ export function getWinningPath(plays, currentPlayer) {
     let gridSize = Math.sqrt(plays.length);
     let previousPlayer = getPreviousPlayer(currentPlayer);
 
-    return _getAllWinningPaths(gridSize).find(hand => (
+    return find(_getAllWinningPaths(gridSize), hand => (
         hand.every(gridNo => plays[gridNo] === previousPlayer)
     ));
 }

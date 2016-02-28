@@ -1,25 +1,32 @@
 import React, {Component, PropTypes} from 'react';
-import {PLAYER_1} from '../reducers';
+import {PLAYER_1} from '../action-reducers';
 
 export default class Square extends Component {
     static propTypes = {
         player: PropTypes.string,
         containerStyle: PropTypes.object,
-        onClick: PropTypes.func.isRequired
+        onPlay: PropTypes.func.isRequired,
+        isWinner: PropTypes.bool
     }
 
     render() {
         let containerStyle = {
             ...this.props.containerStyle,
+            background: this.props.isWinner ? 'peachpuff': 'transparent',
             border: '3px solid black',
-            cursor: this.props.player ? 'default' : 'pointer',
-            textAlign: 'center',
+            color: this.props.player === PLAYER_1 ? 'red': 'blue',
+            cursor: this.props.player ? 'not-allowed' : 'pointer',
             fontSize: 80,
-            color: this.props.player === PLAYER_1 ? 'red': 'blue'
+            textAlign: 'center'
         };
+        let containerProperties = {};
+
+        if (!this.props.player) {
+            containerProperties.onClick = this.props.onPlay;
+        }
 
         return (
-            <div style={containerStyle} onClick={this.props.onClick}>
+            <div style={containerStyle} {...containerProperties}>
                 {this.props.player}
             </div>
         );

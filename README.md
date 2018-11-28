@@ -1,5 +1,7 @@
 # Tic-Tac-Toe React
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/benmvp/tic-tac-toe-react.svg)](https://greenkeeper.io/)
+
 A client-side tic-tac-toe app written with React (and lodash).
 
 ## Features
